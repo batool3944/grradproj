@@ -56,13 +56,13 @@ GOOGLE_SCRIPT_URL=https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec
 ## 4. Run the app
 
 ```powershell
-php artisan serve --host=127.0.0.1 --port=6754
+php artisan serve --host=127.0.0.1 --port=8000
 ```
 
 Then open:
 
-- `http://127.0.0.1:6754/?lang=en`
-- `http://127.0.0.1:6754/?lang=ar`
+- `http://127.0.0.1:8000/?lang=en`
+- `http://127.0.0.1:8000/?lang=ar`
 
 ## 5. Fallback behavior
 
