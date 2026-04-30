@@ -26,6 +26,9 @@ function doPost(e) {
       "honest_data",
       "cares_interests",
       "deceptive_banner",
+      "professional_design",
+      "accurate_information",
+      "reliable_source",
       "reason",
       "consent_at"
     ];

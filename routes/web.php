@@ -150,6 +150,9 @@ Route::post('/experiment/submit', function (Request $request) use ($designs, $go
         'honest_data' => ['required', 'integer', 'between:1,5'],
         'cares_interests' => ['required', 'integer', 'between:1,5'],
         'deceptive_banner' => ['required', 'integer', 'between:1,5'],
+        'professional_design' => ['required', 'integer', 'between:1,5'],
+        'accurate_information' => ['required', 'integer', 'between:1,5'],
+        'reliable_source' => ['required', 'integer', 'between:1,5'],
         'reason' => ['required', 'string', 'max:4000'],
     ]);
 
@@ -171,6 +174,9 @@ Route::post('/experiment/submit', function (Request $request) use ($designs, $go
         'honest_data' => $validated['honest_data'],
         'cares_interests' => $validated['cares_interests'],
         'deceptive_banner' => $validated['deceptive_banner'],
+        'professional_design' => $validated['professional_design'],
+        'accurate_information' => $validated['accurate_information'],
+        'reliable_source' => $validated['reliable_source'],
         'reason' => $validated['reason'],
         'consent_at' => $presurvey['consent_at'],
     ];

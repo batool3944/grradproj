@@ -42,8 +42,8 @@
             :root {
                 --bg: #e6efff;
                 --panel: rgba(255,255,255,.9);
-                --ink: #18324e;
-                --muted: #617a94;
+                --ink: #0b1627;
+                --muted: #23364f;
                 --line: rgba(81,114,149,.18);
                 --accent: #1f67ff;
                 --accent-soft: #e9f0ff;

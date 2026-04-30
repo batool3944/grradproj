@@ -20,6 +20,9 @@
                 'honest_data' => 'أعتقد أن هذا الموقع سيتعامل بصدق مع بياناتي الشخصية.',
                 'cares_interests' => 'يشير تصميم هذا الموقع إلى أنه يهتم بمصالح المستخدمين.',
                 'deceptive_banner' => 'أشعر أن هذه اللافتة تحاول خداعي للموافقة على ملفات تعريف الارتباط.',
+                'professional_design' => 'يبدو الموقع مصممًا بشكل احترافي.',
+                'accurate_information' => 'تبدو المعلومات المقدمة في هذا الموقع دقيقة.',
+                'reliable_source' => 'يبدو هذا الموقع مصدرًا موثوقًا للمعلومات.',
             ],
             'likert_options' => [
                 1 => 'غير موافق بشدة',
@@ -32,9 +35,8 @@
             'reason_placeholder' => 'اكتب السبب هنا...',
             'submit' => 'إرسال الإجابة',
             'back' => 'العودة إلى الاستبيان التمهيدي',
-            'required_note' => 'جميع الأسئلة في هذه الصفحة إلزامية.',
-            'submit_incomplete' => 'يرجى الإجابة على جميع الأسئلة قبل إرسال النموذج.',
-            'submit_ready' => 'تمت الإجابة على جميع الأسئلة ويمكنك الآن الإرسال.',
+            'answer_all' => 'يرجى الإجابة على جميع الأسئلة.',
+            'answer_all_notice' => 'لا يمكن الإرسال قبل الإجابة على جميع الأسئلة.',
             'thanks_title' => 'تم استلام الإجابة',
             'thanks_body_local' => 'تم حفظ الإجابة محليًا داخل المشروع، لكن رابط Google Apps Script الحالي لا يزال بحاجة إلى دالة doPost ليتم الإرسال إلى الجدول مباشرة.',
             'endpoint_note' => 'الرابط الحالي يعيد خطأ doPost، لذلك تم حفظ نسخة احتياطية محليًا.',
@@ -57,6 +59,9 @@
                 'honest_data' => 'I believe this website would be honest in handling my personal data.',
                 'cares_interests' => 'This website design suggests it cares about my best interests.',
                 'deceptive_banner' => 'I feel this banner is trying to deceive me into accepting cookies.',
+                'professional_design' => 'The website appears to be professionally designed.',
+                'accurate_information' => 'The information provided on this website appears to be accurate.',
+                'reliable_source' => 'This website appears to be a reliable source of information.',
             ],
             'likert_options' => [
                 1 => 'Strongly disagree',
@@ -69,9 +74,8 @@
             'reason_placeholder' => 'Write your reason here...',
             'submit' => 'Submit Answer',
             'back' => 'Back to Pre-Survey',
-            'required_note' => 'All questions on this page are required.',
-            'submit_incomplete' => 'Please answer every question before submitting the form.',
-            'submit_ready' => 'All required questions are answered. You can submit now.',
+            'answer_all' => 'Please answer all questions.',
+            'answer_all_notice' => 'You need to answer all questions before submitting.',
             'thanks_title' => 'Response received',
             'thanks_body_local' => 'The response was saved locally in the project, but the current Google Apps Script URL still needs a doPost function before direct sheet submission can work.',
             'endpoint_note' => 'The current endpoint returns a doPost error, so a local backup was saved.',
@@ -93,8 +97,8 @@
                 --bg: #e6efff;
                 --panel: rgba(255,255,255,.9);
                 --panel-strong: #fff;
-                --ink: #18324e;
-                --muted: #617a94;
+                --ink: #0b1627;
+                --muted: #23364f;
                 --line: rgba(81,114,149,.18);
                 --accent: #1f67ff;
                 --accent-soft: #e9f0ff;
@@ -132,7 +136,7 @@
             .eyebrow { display: inline-flex; padding: 8px 14px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: .9rem; font-weight: 800; }
             h1,h2,h3,p { margin: 0; }
             .title { margin-top: 18px; font-size: clamp(1.9rem, 4vw, 3rem); line-height: 1.05; letter-spacing: -.04em; }
-            .copy { margin-top: 16px; color: var(--muted); line-height: 1.85; }
+            .copy { margin-top: 16px; color: var(--ink); line-height: 1.85; }
             .meta { margin-top: 20px; display: inline-flex; padding: 10px 14px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-size: .92rem; font-weight: 800; }
             .stimulus-card { background: rgba(255,255,255,.78); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 18px; }
             .stimulus-card strong { display: block; margin-bottom: 12px; font-size: 1rem; }
@@ -147,7 +151,10 @@
                 display: flex; align-items: center; justify-content: center; min-height: 74px; padding: 16px; border-radius: 18px; border: 1px solid rgba(86,111,138,.18); background: rgba(255,255,255,.96); font-weight: 800; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
             }
             .option input:checked + label, .likert-cell input:checked + label {
-                border-color: rgba(31,103,255,.34); box-shadow: 0 12px 22px rgba(31,103,255,.1); transform: translateY(-1px);
+                border-color: #163f99;
+                border-width: 2px;
+                box-shadow: 0 14px 24px rgba(22,63,153,.16);
+                transform: translateY(-1px);
             }
             .likert-block { margin-top: 28px; }
             .likert-row {
@@ -231,8 +238,7 @@
                     </section>
 
                     <aside class="stimulus-card">
-                        <strong>{{ $design['name'] }}</strong>
-                        <img class="stimulus-shot" src="{{ $imagePath }}" alt="{{ $design['name'] }}">
+                        <img class="stimulus-shot" src="{{ $imagePath }}" alt="{{ $copy['response_title'] }}">
                     </aside>
                 </div>
 
@@ -240,10 +246,10 @@
                     @csrf
                     <input type="hidden" name="lang" value="{{ $lang }}">
                     <input type="hidden" name="design_id" value="{{ $design['id'] }}">
+                    <div class="flash warning" id="submit-notice" hidden>{{ $copy['answer_all_notice'] }}</div>
 
                     <section>
                         <h2 class="section-title">{{ $copy['response_title'] }}</h2>
-                        <p class="hint">{{ $copy['required_note'] }}</p>
                         <div class="response-grid">
                             @foreach ($copy['response_options'] as $value => $label)
                                 <div class="option">
@@ -278,9 +284,9 @@
                     </section>
 
                     <div class="actions">
-                        <div class="hint" id="submit-status">{{ $copy['submit_incomplete'] }}</div>
+                        <div class="hint" id="submit-status">{{ $copy['answer_all'] }}</div>
                         <a class="btn btn-secondary" href="{{ route('presurvey', ['lang' => $lang]) }}">{{ $copy['back'] }}</a>
-                        <button class="btn btn-primary" id="survey-submit-button" type="submit" disabled>{{ $copy['submit'] }}</button>
+                        <button class="btn btn-primary" id="survey-submit-button" type="submit">{{ $copy['submit'] }}</button>
                     </div>
                 </form>
             @endif
@@ -290,12 +296,12 @@
             <script>
                 const experimentForm = document.querySelector('form[action="{{ route('experiment.submit') }}"]');
                 const responseActionInputs = Array.from(document.querySelectorAll('input[name="response_action"]'));
-                const likertNames = ['honest_data', 'cares_interests', 'deceptive_banner'];
+                const likertNames = ['honest_data', 'cares_interests', 'deceptive_banner', 'professional_design', 'accurate_information', 'reliable_source'];
                 const reasonField = document.querySelector('textarea[name="reason"]');
                 const submitButton = document.getElementById('survey-submit-button');
                 const submitStatus = document.getElementById('submit-status');
-                const submitIncomplete = @json($copy['submit_incomplete']);
-                const submitReady = @json($copy['submit_ready']);
+                const submitNotice = document.getElementById('submit-notice');
+                const answerAll = @json($copy['answer_all']);
 
                 function experimentFormReady() {
                     const actionAnswered = responseActionInputs.some((input) => input.checked);
@@ -309,12 +315,20 @@
 
                 function updateExperimentSubmitState() {
                     const ready = experimentFormReady();
-                    submitButton.disabled = !ready;
-                    submitStatus.textContent = ready ? submitReady : submitIncomplete;
+                    submitStatus.textContent = ready ? '' : answerAll;
+                    submitNotice.hidden = true;
                 }
 
                 experimentForm.addEventListener('input', updateExperimentSubmitState);
                 experimentForm.addEventListener('change', updateExperimentSubmitState);
+                experimentForm.addEventListener('submit', (event) => {
+                    if (!experimentFormReady()) {
+                        event.preventDefault();
+                        submitNotice.hidden = false;
+                        submitStatus.textContent = answerAll;
+                        submitNotice.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                });
                 updateExperimentSubmitState();
             </script>
         @endif

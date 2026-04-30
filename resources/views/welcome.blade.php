@@ -21,7 +21,6 @@
             'cookie_body' => 'هو ملف نصي صغير يخزنه الموقع الإلكتروني على جهاز المستخدم لتذكر معلومات من زيارات سابقة، مثل بيانات تسجيل الدخول والتفضيلات والنشاط.',
             'banner_title' => 'لافتة ملفات تعريف الارتباط',
             'banner_body' => 'هي إشعار يظهر على صفحة الويب، غالبًا في الأعلى أو الوسط أو الأسفل، لإبلاغ المستخدمين باستخدام الكوكيز وطلب اختيارهم للموافقة.',
-            'image_title' => 'مثال للافتة باللغة العربية',
             'back' => 'رجوع',
             'survey_eyebrow' => 'بيانات المشارك',
             'survey_title' => 'أسئلة تمهيدية قصيرة',
@@ -50,9 +49,8 @@
             'age_confirm' => 'أؤكد أن عمري 18 سنة أو أكثر.',
             'consent_confirm' => 'أوافق طوعًا على المشاركة في هذه الدراسة الأكاديمية.',
             'consent_detail' => 'إجاباتي مجهولة الهوية وتستخدم للأغراض الأكاديمية فقط.',
-            'notice' => 'لا ينبغي للمشاركين دون 18 عامًا المتابعة في هذه الدراسة.',
             'consent_underage' => 'هذه الدراسة مخصصة للمشاركين الذين تبلغ أعمارهم 18 سنة أو أكثر.',
-            'consent_incomplete' => 'أكد العمر 18+ والموافقة لتفعيل زر البدء.',
+            'continue_notice' => 'يرجى إكمال جميع الأسئلة المطلوبة وتأكيد الموافقة قبل المتابعة.',
             'start' => 'ابدأ التجربة',
             'success' => 'تم تسجيل الاستبيان التمهيدي، والمشارك مؤهل للمتابعة إلى التجربة.',
             'error' => 'يرجى مراجعة الحقول المطلوبة قبل المتابعة.',
@@ -76,7 +74,6 @@
             'cookie_body' => 'A cookie is a small text file stored on a user\'s device by a website to remember information from previous visits, such as login details, preferences, and browsing activity.',
             'banner_title' => 'Cookie Banner',
             'banner_body' => 'A cookie banner is a notice shown on a webpage, often at the top, center, or bottom, to inform users that cookies are used and ask for their consent choices.',
-            'image_title' => 'Example banner in English',
             'back' => 'Back',
             'survey_eyebrow' => 'Participant Information',
             'survey_title' => 'Short pre-survey questions',
@@ -105,9 +102,8 @@
             'age_confirm' => 'I confirm that I am 18 years old or above.',
             'consent_confirm' => 'I voluntarily agree to participate in this academic study.',
             'consent_detail' => 'My responses are anonymous and used for academic purposes only.',
-            'notice' => 'Participants under 18 should not continue with this study.',
             'consent_underage' => 'This study is limited to participants aged 18 or above.',
-            'consent_incomplete' => 'Confirm 18+ and consent to enable the start button.',
+            'continue_notice' => 'Please complete all required questions and confirm consent before continuing.',
             'start' => 'Begin the Experiment',
             'success' => 'Your pre-survey has been recorded. The participant is eligible to continue to the experiment.',
             'error' => 'Please review the required fields before continuing.',
@@ -131,8 +127,8 @@
                 --bg-2: #edf3ff;
                 --surface: rgba(255, 255, 255, 0.88);
                 --surface-strong: #ffffff;
-                --ink: #18324e;
-                --muted: #5f7790;
+                --ink: #0b1627;
+                --muted: #23364f;
                 --line: rgba(81, 114, 149, 0.16);
                 --accent: #19805e;
                 --accent-strong: #10674c;
@@ -198,7 +194,12 @@
             .option, .checkbox-card { position: relative; }
             .option input, .checkbox-card input { position: absolute; opacity: 0; pointer-events: none; }
             .option label { display: block; min-height: 78px; padding: 16px 18px; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
-            .option input:checked + label, .checkbox-card input:checked + label { border-color: rgba(25,128,94,.36); box-shadow: 0 12px 22px rgba(25,128,94,.1); transform: translateY(-1px); }
+            .option input:checked + label, .checkbox-card input:checked + label {
+                border-color: #10674c;
+                border-width: 2px;
+                box-shadow: 0 14px 24px rgba(16,103,76,.16);
+                transform: translateY(-1px);
+            }
             .checkbox-card label { display: flex; gap: 14px; align-items: flex-start; padding: 18px; cursor: pointer; }
             .checkbox-mark { width: 24px; height: 24px; border-radius: 7px; flex: 0 0 auto; margin-top: 2px; border: 1.5px solid rgba(73,97,122,.34); background: #fff; position: relative; }
             .checkbox-card input:checked + label .checkbox-mark { background: var(--accent); border-color: var(--accent); }
@@ -260,6 +261,7 @@
                     <form method="POST" action="{{ route('presurvey.start') }}" id="presurvey-form">
                         @csrf
                         <input type="hidden" name="lang" value="{{ $lang ?? 'en' }}">
+                        <div class="flash error" id="presurvey-notice" hidden>{{ $copy['continue_notice'] }}</div>
 
                         <section class="step active" data-step="1">
                             <div class="panel">
@@ -327,7 +329,6 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="notice">{{ $copy['notice'] }}</div>
                                 </div>
                             </div>
                             <div class="wizard-actions">
@@ -356,11 +357,10 @@
                                 </div>
                                 <div class="image-stack">
                                     <div class="image-card">
-                                        <strong>{{ $copy['image_title'] }}</strong>
                                         <img
                                             class="banner-shot"
                                             src="{{ asset($isArabic ? 'study-images/cookie-banner-ar.jpg' : 'study-images/cookie-banner-en.jpg') }}"
-                                            alt="{{ $copy['image_title'] }}"
+                                            alt="{{ $copy['definitions_title'] }}"
                                         >
                                     </div>
                                 </div>
@@ -386,8 +386,9 @@
             const consent = document.getElementById('consent');
             const startButton = document.getElementById('start-button');
             const consentStatus = document.getElementById('consent-status');
+            const presurveyNotice = document.getElementById('presurvey-notice');
             const consentUnderage = @json($copy['consent_underage']);
-            const consentIncomplete = @json($copy['consent_incomplete']);
+            const continueNotice = @json($copy['continue_notice']);
 
             function showStep(stepNumber) {
                 steps.forEach((step) => step.classList.toggle('active', Number(step.dataset.step) === stepNumber));
@@ -408,13 +409,14 @@
             function updateConsentState() {
                 const ready = demographicReady() && participantEligible() && ageGate.checked && consent.checked;
                 startButton.disabled = !ready;
+                presurveyNotice.hidden = true;
 
                 if (!participantEligible() && ageRange.value) {
                     consentStatus.textContent = consentUnderage;
                     return;
                 }
 
-                consentStatus.textContent = ready ? '' : consentIncomplete;
+                consentStatus.textContent = '';
             }
 
             document.querySelectorAll('[data-next-step]').forEach((button) => {
@@ -422,6 +424,9 @@
                     const nextStep = Number(button.dataset.nextStep);
 
                     if (nextStep === 2 && (!demographicReady() || !participantEligible() || !ageGate.checked || !consent.checked)) {
+                        presurveyNotice.hidden = false;
+                        consentStatus.textContent = continueNotice;
+                        presurveyNotice.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                         return;
                     }
 
