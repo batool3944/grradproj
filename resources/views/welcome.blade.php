@@ -11,19 +11,10 @@
             'lang_secondary' => 'English',
             'lang_primary_url' => route('presurvey', ['lang' => 'ar']),
             'lang_secondary_url' => route('presurvey', ['lang' => 'en']),
-            'step_word' => 'الخطوة',
-            'progress' => ['المقدمة', 'التعريفات', 'الاستبيان التمهيدي', 'الموافقة'],
             'welcome_eyebrow' => 'مسار الاستبيان التمهيدي',
             'welcome_title' => 'دراسة تأثير تصميم لافتات ملفات تعريف الارتباط على ثقة المستخدمين ومصداقية المواقع الإلكترونية',
             'welcome_body' => 'تهدف هذه الدراسة إلى فهم كيف تؤثر لافتات ملفات تعريف الارتباط على الانطباع الأول للمستخدم وثقته بالموقع الإلكتروني. ستنتقل عبر عدة شاشات قصيرة، تشاهد أمثلة للافتات الكوكيز، ثم تجيب عن أسئلة مختصرة. جميع الإجابات مجهولة الهوية وتستخدم لأغراض أكاديمية فقط.',
-            'chips' => ['إجابات مجهولة', 'لمن هم 18+', 'الموافقة مطلوبة'],
-            'designs_ready' => 'التصاميم الجاهزة حاليًا',
-            'designs_missing' => 'عدد التصاميم التي ما زالت بانتظار الصور',
-            'welcome_card_title_1' => 'ماذا سيحدث بعد ذلك؟',
-            'welcome_card_body_1' => 'أولًا ستقرأ تعريفات قصيرة، ثم تكمل أسئلة البيانات الأساسية، وأخيرًا تؤكد الموافقة قبل بدء التجربة.',
-            'welcome_card_title_2' => 'الوقت المتوقع',
-            'welcome_card_body_2' => 'خطوات تمهيدية قصيرة ومقسمة لتكون أسهل قبل المهمة الرئيسية.',
-            'next_definitions' => 'التالي: التعريفات',
+            'next' => 'التالي',
             'definitions_eyebrow' => 'التعريفات',
             'definitions_title' => 'ملفات تعريف الارتباط ولافتات الكوكيز',
             'cookie_title' => 'ملف تعريف الارتباط',
@@ -32,10 +23,9 @@
             'banner_body' => 'هي إشعار يظهر على صفحة الويب، غالبًا في الأعلى أو الوسط أو الأسفل، لإبلاغ المستخدمين باستخدام الكوكيز وطلب اختيارهم للموافقة.',
             'image_title' => 'مثال للافتة باللغة العربية',
             'back' => 'رجوع',
-            'next_survey' => 'التالي: الاستبيان',
             'survey_eyebrow' => 'بيانات المشارك',
             'survey_title' => 'أسئلة تمهيدية قصيرة',
-            'survey_body' => 'يرجى الإجابة عن هذه الأسئلة الأساسية قبل الانتقال إلى خطوة الموافقة.',
+            'survey_body' => 'يرجى الإجابة عن هذه الأسئلة الأساسية وتأكيد الموافقة قبل الانتقال إلى صفحة التعريفات.',
             'age_label' => 'ما هو عمرك؟',
             'age_placeholder' => 'اختر الفئة العمرية',
             'ages' => ['18-24' => '18-24', '25-34' => '25-34', '35-44' => '35-44', '45-54' => '45-54', '55+' => '55+'],
@@ -52,20 +42,17 @@
                 'medicine' => 'الطب',
                 'other' => 'آخر',
             ],
-            'screening_incomplete' => 'أكمل الأسئلة الثلاثة للانتقال إلى خطوة الموافقة.',
+            'screening_incomplete' => 'أكمل الأسئلة الثلاثة وحدد الموافقة للمتابعة.',
             'screening_underage' => 'هذه الدراسة مخصصة للمشاركين الذين تبلغ أعمارهم 18 سنة أو أكثر.',
             'screening_ready' => 'تمت الإجابة على الأسئلة الأساسية ويمكنك المتابعة.',
-            'next_consent' => 'التالي: الموافقة',
             'consent_eyebrow' => 'الموافقة والأهلية',
             'consent_title' => 'أكد مشاركتك قبل بدء التجربة',
-            'consent_body' => 'يتفعل زر البدء فقط بعد تأكيد أن عمر المشارك 18 سنة أو أكثر وأنه يوافق طوعًا على المشاركة في الدراسة.',
             'age_confirm' => 'أؤكد أن عمري 18 سنة أو أكثر.',
             'consent_confirm' => 'أوافق طوعًا على المشاركة في هذه الدراسة الأكاديمية.',
             'consent_detail' => 'إجاباتي مجهولة الهوية وتستخدم للأغراض الأكاديمية فقط.',
             'notice' => 'لا ينبغي للمشاركين دون 18 عامًا المتابعة في هذه الدراسة.',
             'consent_underage' => 'هذه الدراسة مخصصة للمشاركين الذين تبلغ أعمارهم 18 سنة أو أكثر.',
             'consent_incomplete' => 'أكد العمر 18+ والموافقة لتفعيل زر البدء.',
-            'consent_ready' => 'كل شيء جاهز. يمكنك بدء التجربة الآن.',
             'start' => 'ابدأ التجربة',
             'success' => 'تم تسجيل الاستبيان التمهيدي، والمشارك مؤهل للمتابعة إلى التجربة.',
             'error' => 'يرجى مراجعة الحقول المطلوبة قبل المتابعة.',
@@ -79,19 +66,10 @@
             'lang_secondary' => 'العربية',
             'lang_primary_url' => route('presurvey', ['lang' => 'en']),
             'lang_secondary_url' => route('presurvey', ['lang' => 'ar']),
-            'step_word' => 'Step',
-            'progress' => ['Welcome', 'Definitions', 'Pre-Survey', 'Consent'],
             'welcome_eyebrow' => 'Pre-Survey Flow',
             'welcome_title' => 'Investigating the Impact of Cookie Banner Interface Design on User Trust and Perceptions of Website Credibility',
             'welcome_body' => 'This study explores how cookie banners shape first impressions of trust and website credibility. You will move through a few short screens, review sample cookie banners, and answer brief questions. All responses are anonymous and used for academic research only.',
-            'chips' => ['Anonymous responses', '18+ only', 'Consent required'],
-            'designs_ready' => 'Designs currently ready',
-            'designs_missing' => 'Design slots still waiting for images',
-            'welcome_card_title_1' => 'What happens next?',
-            'welcome_card_body_1' => 'First you will read short definitions, then complete the demographic questions, and finally confirm consent before starting the experiment.',
-            'welcome_card_title_2' => 'Estimated effort',
-            'welcome_card_body_2' => 'A short setup flow designed to feel light and easy before the main task.',
-            'next_definitions' => 'Next: Definitions',
+            'next' => 'Next',
             'definitions_eyebrow' => 'Definitions',
             'definitions_title' => 'Cookie and Cookie Banner',
             'cookie_title' => 'Cookie',
@@ -100,10 +78,9 @@
             'banner_body' => 'A cookie banner is a notice shown on a webpage, often at the top, center, or bottom, to inform users that cookies are used and ask for their consent choices.',
             'image_title' => 'Example banner in English',
             'back' => 'Back',
-            'next_survey' => 'Next: Pre-Survey',
             'survey_eyebrow' => 'Participant Information',
             'survey_title' => 'Short pre-survey questions',
-            'survey_body' => 'Please answer these basic questions before you move to the consent step.',
+            'survey_body' => 'Please answer these basic questions and confirm consent before you move to the definitions page.',
             'age_label' => 'What is your age?',
             'age_placeholder' => 'Select age range',
             'ages' => ['18-24' => '18-24', '25-34' => '25-34', '35-44' => '35-44', '45-54' => '45-54', '55+' => '55+'],
@@ -120,20 +97,17 @@
                 'medicine' => 'Medicine',
                 'other' => 'Other',
             ],
-            'screening_incomplete' => 'Complete the three questions to move to the consent step.',
+            'screening_incomplete' => 'Complete the three questions and consent items to continue.',
             'screening_underage' => 'This study is limited to participants aged 18 or above.',
             'screening_ready' => 'The participant information is complete and ready to continue.',
-            'next_consent' => 'Next: Consent',
             'consent_eyebrow' => 'Consent and Eligibility',
             'consent_title' => 'Confirm participation before starting',
-            'consent_body' => 'The start button becomes available only after confirming that the participant is 18+ and agrees to join the study voluntarily.',
             'age_confirm' => 'I confirm that I am 18 years old or above.',
             'consent_confirm' => 'I voluntarily agree to participate in this academic study.',
             'consent_detail' => 'My responses are anonymous and used for academic purposes only.',
             'notice' => 'Participants under 18 should not continue with this study.',
             'consent_underage' => 'This study is limited to participants aged 18 or above.',
             'consent_incomplete' => 'Confirm 18+ and consent to enable the start button.',
-            'consent_ready' => 'Everything is ready. You can start the experiment now.',
             'start' => 'Begin the Experiment',
             'success' => 'Your pre-survey has been recorded. The participant is eligible to continue to the experiment.',
             'error' => 'Please review the required fields before continuing.',
@@ -196,18 +170,11 @@
             }
             .lang-link.active { background: var(--ink); color: #fff; }
             .wizard { background: var(--surface); border: 1px solid rgba(255,255,255,.66); border-radius: var(--radius-xl); box-shadow: var(--shadow); backdrop-filter: blur(18px); overflow: hidden; }
-            .wizard-progress { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 22px 24px 0; }
-            .progress-pill { padding: 14px 16px; border-radius: 18px; border: 1px solid var(--line); background: rgba(255,255,255,.62); color: var(--muted); }
-            .progress-pill strong, .progress-pill span { display: block; }
-            .progress-pill strong { font-size: .82rem; letter-spacing: .04em; text-transform: uppercase; }
-            .progress-pill span { margin-top: 6px; font-size: .98rem; font-weight: 800; }
-            .progress-pill.active { color: var(--accent-strong); background: var(--accent-soft); border-color: rgba(25,128,94,.2); }
             .wizard-body { padding: 24px; }
             .step { display: none; animation: fadeIn .24s ease; }
             .step.active { display: block; }
             @keyframes fadeIn { from { opacity: 0; transform: translateY(8px);} to { opacity:1; transform:translateY(0);} }
             .hero-layout, .definition-layout, .screening-grid { display: grid; gap: 24px; }
-            .hero-layout { grid-template-columns: 1.08fr .92fr; }
             .definition-layout { grid-template-columns: .95fr 1.05fr; }
             .screening-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
             .panel { background: rgba(255,255,255,.74); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 26px; }
@@ -215,13 +182,9 @@
             h1,h2,h3,p { margin: 0; }
             .step-title { margin-top: 18px; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.04; letter-spacing: -.04em; }
             .step-copy { margin-top: 18px; color: var(--muted); line-height: 1.85; font-size: 1rem; }
-            .chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
-            .chip { padding: 10px 14px; border-radius: 999px; border: 1px solid var(--line); background: #fff; font-size: .92rem; font-weight: 800; }
-            .hero-card { display: grid; gap: 16px; align-content: start; background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(245,248,255,.95)), linear-gradient(145deg, #ebf2ff, #d7e3ff); }
-            .highlight-box, .image-card, .definition-box { background: rgba(255,255,255,.9); border: 1px solid var(--line); }
-            .highlight-box { padding: 18px; border-radius: var(--radius-md); }
-            .highlight-box strong, .image-card strong, .definition-box strong { display: block; margin-bottom: 8px; font-size: 1rem; }
-            .highlight-box p, .definition-box p { color: var(--muted); line-height: 1.8; }
+            .image-card, .definition-box { background: rgba(255,255,255,.9); border: 1px solid var(--line); }
+            .image-card strong, .definition-box strong { display: block; margin-bottom: 8px; font-size: 1rem; }
+            .definition-box p { color: var(--muted); line-height: 1.8; }
             .image-stack, .definition-boxes, .checkbox-stack { display: grid; gap: 16px; }
             .image-card { border-radius: var(--radius-lg); padding: 18px; }
             .banner-shot { width: 100%; display: block; border-radius: 18px; border: 1px solid rgba(73,97,122,.1); box-shadow: 0 16px 28px rgba(68,92,132,.12); }
@@ -258,19 +221,15 @@
             .btn[disabled] { opacity: .56; cursor: not-allowed; box-shadow: none; transform: none; }
             .step-status { color: var(--muted); font-size: .95rem; font-weight: 700; }
             @media (max-width: 920px) {
-                .hero-layout, .definition-layout, .screening-grid, .radio-grid { grid-template-columns: 1fr; }
-                .wizard-progress { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+                .definition-layout, .screening-grid, .radio-grid { grid-template-columns: 1fr; }
             }
             @media (max-width: 640px) {
                 .page-shell { width: min(100% - 16px, 100%); padding: 16px 0 28px; }
                 .topbar, .wizard-actions { flex-direction: column; align-items: stretch; }
-                .wizard-progress, .wizard-body, .panel { padding-left: 18px; padding-right: 18px; }
-                .wizard-progress { padding-top: 18px; }
-                .wizard-progress { grid-template-columns: 1fr; gap: 10px; }
+                .wizard-body, .panel { padding-left: 18px; padding-right: 18px; }
                 .step-title { font-size: 1.8rem; line-height: 1.12; }
                 .step-copy { font-size: .98rem; line-height: 1.75; }
-                .chip { width: 100%; justify-content: center; text-align: center; }
-                .image-card, .highlight-box, .definition-box { padding: 16px; }
+                .image-card, .definition-box { padding: 16px; }
                 .select { min-height: 54px; }
                 .btn, .btn-row, .btn-row .btn { width: 100%; }
             }
@@ -290,15 +249,6 @@
             </div>
 
             <div class="wizard">
-                <div class="wizard-progress">
-                    @foreach ($copy['progress'] as $index => $label)
-                        <div class="progress-pill {{ $index === 0 ? 'active' : '' }}" data-progress="{{ $index + 1 }}">
-                            <strong>{{ $copy['step_word'] }} {{ $index + 1 }}</strong>
-                            <span>{{ $label }}</span>
-                        </div>
-                    @endforeach
-                </div>
-
                 <div class="wizard-body">
                     @if (session('started'))
                         <div class="flash success">{{ $copy['success'] }}</div>
@@ -312,32 +262,78 @@
                         <input type="hidden" name="lang" value="{{ $lang ?? 'en' }}">
 
                         <section class="step active" data-step="1">
-                            <div class="hero-layout">
-                                <div class="panel">
-                                    <div class="eyebrow">{{ $copy['welcome_eyebrow'] }}</div>
-                                    <h1 class="step-title">{{ $copy['welcome_title'] }}</h1>
-                                    <p class="step-copy">{{ $copy['welcome_body'] }}</p>
-                                    <div class="chips">
-                                        @foreach ($copy['chips'] as $chip)
-                                            <div class="chip">{{ $chip }}</div>
-                                        @endforeach
-                                        <div class="chip">{{ $copy['designs_ready'] }}: {{ $availableDesignCount ?? 0 }}/{{ $configuredDesignCount ?? 0 }}</div>
+                            <div class="panel">
+                                <div class="eyebrow">{{ $copy['welcome_eyebrow'] }}</div>
+                                <h1 class="step-title">{{ $copy['welcome_title'] }}</h1>
+                                <p class="step-copy">{{ $copy['welcome_body'] }}</p>
+                                <div style="margin-top: 28px;">
+                                    <div class="eyebrow">{{ $copy['survey_eyebrow'] }}</div>
+                                    <h2 class="step-title" style="font-size: clamp(1.7rem, 3vw, 2.5rem);">{{ $copy['survey_title'] }}</h2>
+                                    <p class="step-copy">{{ $copy['survey_body'] }}</p>
+                                    <div class="screening-grid" style="margin-top: 20px;">
+                                        <div class="field">
+                                            <label class="label" for="age_range">{{ $copy['age_label'] }}</label>
+                                            <select class="select" id="age_range" name="age_range" required>
+                                                <option value="">{{ $copy['age_placeholder'] }}</option>
+                                                @foreach ($copy['ages'] as $value => $label)
+                                                    <option value="{{ $value }}" @selected(old('age_range') === $value)>{{ $label }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="field">
+                                            <div class="label">{{ $copy['gender_label'] }}</div>
+                                            <div class="radio-grid">
+                                                <div class="option">
+                                                    <input id="gender_female" type="radio" name="gender" value="female" @checked(old('gender') === 'female') required>
+                                                    <label for="gender_female"><strong>{{ $copy['gender_female'] }}</strong></label>
+                                                </div>
+                                                <div class="option">
+                                                    <input id="gender_male" type="radio" name="gender" value="male" @checked(old('gender') === 'male') required>
+                                                    <label for="gender_male"><strong>{{ $copy['gender_male'] }}</strong></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="field full-span">
+                                            <label class="label" for="field_of_study">{{ $copy['field_label'] }}</label>
+                                            <select class="select" id="field_of_study" name="field_of_study" required>
+                                                <option value="">{{ $copy['field_placeholder'] }}</option>
+                                                @foreach ($copy['fields'] as $value => $label)
+                                                    <option value="{{ $value }}" @selected(old('field_of_study') === $value)>{{ $label }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="panel hero-card">
-                                    <div class="highlight-box">
-                                        <strong>{{ $copy['welcome_card_title_1'] }}</strong>
-                                        <p>{{ $copy['welcome_card_body_1'] }}</p>
+
+                                <div style="margin-top: 28px;">
+                                    <div class="eyebrow">{{ $copy['consent_eyebrow'] }}</div>
+                                    <h2 class="step-title" style="font-size: clamp(1.7rem, 3vw, 2.5rem);">{{ $copy['consent_title'] }}</h2>
+                                    <div class="checkbox-stack" style="margin-top: 22px;">
+                                        <div class="checkbox-card">
+                                            <input id="is_18_plus" type="checkbox" name="is_18_plus" value="1" @checked(old('is_18_plus')) required>
+                                            <label for="is_18_plus">
+                                                <span class="checkbox-mark" aria-hidden="true"></span>
+                                                <span class="checkbox-copy"><strong>{{ $copy['age_confirm'] }}</strong></span>
+                                            </label>
+                                        </div>
+                                        <div class="checkbox-card">
+                                            <input id="consent" type="checkbox" name="consent" value="1" @checked(old('consent')) required>
+                                            <label for="consent">
+                                                <span class="checkbox-mark" aria-hidden="true"></span>
+                                                <span class="checkbox-copy">
+                                                    <strong>{{ $copy['consent_confirm'] }}</strong>
+                                                    <span>{{ $copy['consent_detail'] }}</span>
+                                                </span>
+                                            </label>
+                                        </div>
                                     </div>
-                                    <div class="highlight-box">
-                                        <strong>{{ $copy['welcome_card_title_2'] }}</strong>
-                                        <p>{{ $copy['welcome_card_body_2'] }}</p>
-                                    </div>
+                                    <div class="notice">{{ $copy['notice'] }}</div>
                                 </div>
                             </div>
-                            <div class="wizard-actions compact">
+                            <div class="wizard-actions">
                                 <div class="btn-row">
-                                    <button class="btn btn-primary" type="button" data-next-step="2">{{ $copy['next_definitions'] }}</button>
+                                    <div class="step-status" id="consent-status"></div>
+                                    <button class="btn btn-primary" type="button" data-next-step="2">{{ $copy['next'] }}</button>
                                 </div>
                             </div>
                         </section>
@@ -371,92 +367,12 @@
                             </div>
                             <div class="wizard-actions">
                                 <div class="btn-row"><button class="btn btn-secondary" type="button" data-prev-step="1">{{ $copy['back'] }}</button></div>
-                                <div class="btn-row"><button class="btn btn-primary" type="button" data-next-step="3">{{ $copy['next_survey'] }}</button></div>
+                                <div class="btn-row"><button class="btn btn-primary" id="start-button" type="submit" disabled>{{ $copy['start'] }}</button></div>
                             </div>
                         </section>
-
-                        <section class="step" data-step="3">
-                            <div class="panel">
-                                <div class="eyebrow">{{ $copy['survey_eyebrow'] }}</div>
-                                <h2 class="step-title" style="font-size: clamp(1.7rem, 3vw, 2.5rem);">{{ $copy['survey_title'] }}</h2>
-                                <p class="step-copy">{{ $copy['survey_body'] }}</p>
-                                <div class="screening-grid" style="margin-top: 20px;">
-                                    <div class="field">
-                                        <label class="label" for="age_range">{{ $copy['age_label'] }}</label>
-                                        <select class="select" id="age_range" name="age_range" required>
-                                            <option value="">{{ $copy['age_placeholder'] }}</option>
-                                            @foreach ($copy['ages'] as $value => $label)
-                                                <option value="{{ $value }}" @selected(old('age_range') === $value)>{{ $label }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="field">
-                                        <div class="label">{{ $copy['gender_label'] }}</div>
-                                        <div class="radio-grid">
-                                            <div class="option">
-                                                <input id="gender_female" type="radio" name="gender" value="female" @checked(old('gender') === 'female') required>
-                                                <label for="gender_female"><strong>{{ $copy['gender_female'] }}</strong></label>
-                                            </div>
-                                            <div class="option">
-                                                <input id="gender_male" type="radio" name="gender" value="male" @checked(old('gender') === 'male') required>
-                                                <label for="gender_male"><strong>{{ $copy['gender_male'] }}</strong></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="field full-span">
-                                        <label class="label" for="field_of_study">{{ $copy['field_label'] }}</label>
-                                        <select class="select" id="field_of_study" name="field_of_study" required>
-                                            <option value="">{{ $copy['field_placeholder'] }}</option>
-                                            @foreach ($copy['fields'] as $value => $label)
-                                                <option value="{{ $value }}" @selected(old('field_of_study') === $value)>{{ $label }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="wizard-actions">
-                                <div class="btn-row"><button class="btn btn-secondary" type="button" data-prev-step="2">{{ $copy['back'] }}</button></div>
-                                <div class="btn-row">
-                                    <div class="step-status" id="screening-status"></div>
-                                    <button class="btn btn-primary" type="button" data-next-step="4">{{ $copy['next_consent'] }}</button>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="step" data-step="4">
-                            <div class="panel">
-                                <div class="eyebrow">{{ $copy['consent_eyebrow'] }}</div>
-                                <h2 class="step-title" style="font-size: clamp(1.7rem, 3vw, 2.5rem);">{{ $copy['consent_title'] }}</h2>
-                                <p class="step-copy">{{ $copy['consent_body'] }}</p>
-                                <div class="checkbox-stack" style="margin-top: 22px;">
-                                    <div class="checkbox-card">
-                                        <input id="is_18_plus" type="checkbox" name="is_18_plus" value="1" @checked(old('is_18_plus')) required>
-                                        <label for="is_18_plus">
-                                            <span class="checkbox-mark" aria-hidden="true"></span>
-                                            <span class="checkbox-copy"><strong>{{ $copy['age_confirm'] }}</strong></span>
-                                        </label>
-                                    </div>
-                                    <div class="checkbox-card">
-                                        <input id="consent" type="checkbox" name="consent" value="1" @checked(old('consent')) required>
-                                        <label for="consent">
-                                            <span class="checkbox-mark" aria-hidden="true"></span>
-                                            <span class="checkbox-copy">
-                                                <strong>{{ $copy['consent_confirm'] }}</strong>
-                                                <span>{{ $copy['consent_detail'] }}</span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="notice">{{ $copy['notice'] }}</div>
-                            </div>
-                            <div class="wizard-actions">
-                                <div class="btn-row"><button class="btn btn-secondary" type="button" data-prev-step="3">{{ $copy['back'] }}</button></div>
-                                <div class="btn-row">
-                                    <div class="step-status" id="consent-status"></div>
-                                    <button class="btn btn-primary" id="start-button" type="submit" disabled>{{ $copy['start'] }}</button>
-                                </div>
-                            </div>
-                        </section>
+{{--
+                        Removed separate demographics and consent steps.
+--}}
                     </form>
                 </div>
             </div>
@@ -464,24 +380,17 @@
 
         <script>
             const steps = Array.from(document.querySelectorAll('[data-step]'));
-            const progressPills = Array.from(document.querySelectorAll('[data-progress]'));
             const ageRange = document.getElementById('age_range');
             const fieldOfStudy = document.getElementById('field_of_study');
             const ageGate = document.getElementById('is_18_plus');
             const consent = document.getElementById('consent');
             const startButton = document.getElementById('start-button');
-            const screeningStatus = document.getElementById('screening-status');
             const consentStatus = document.getElementById('consent-status');
-            const screeningIncomplete = @json($copy['screening_incomplete']);
-            const screeningUnderage = @json($copy['screening_underage']);
-            const screeningReady = @json($copy['screening_ready']);
             const consentUnderage = @json($copy['consent_underage']);
             const consentIncomplete = @json($copy['consent_incomplete']);
-            const consentReady = @json($copy['consent_ready']);
 
             function showStep(stepNumber) {
                 steps.forEach((step) => step.classList.toggle('active', Number(step.dataset.step) === stepNumber));
-                progressPills.forEach((pill) => pill.classList.toggle('active', Number(pill.dataset.progress) === stepNumber));
             }
 
             function demographicReady() {
@@ -496,43 +405,23 @@
                 return Boolean(ageRange.value);
             }
 
-            function updateScreeningState() {
-                if (!demographicReady()) {
-                    screeningStatus.textContent = screeningIncomplete;
-                    return;
-                }
-
-                if (!participantEligible()) {
-                    screeningStatus.textContent = screeningUnderage;
-                    return;
-                }
-
-                screeningStatus.textContent = screeningReady;
-            }
-
             function updateConsentState() {
                 const ready = demographicReady() && participantEligible() && ageGate.checked && consent.checked;
                 startButton.disabled = !ready;
-
-                if (ready) {
-                    consentStatus.textContent = consentReady;
-                    return;
-                }
 
                 if (!participantEligible() && ageRange.value) {
                     consentStatus.textContent = consentUnderage;
                     return;
                 }
 
-                consentStatus.textContent = consentIncomplete;
+                consentStatus.textContent = ready ? '' : consentIncomplete;
             }
 
             document.querySelectorAll('[data-next-step]').forEach((button) => {
                 button.addEventListener('click', () => {
                     const nextStep = Number(button.dataset.nextStep);
 
-                    if (nextStep === 4 && (!demographicReady() || !participantEligible())) {
-                        updateScreeningState();
+                    if (nextStep === 2 && (!demographicReady() || !participantEligible() || !ageGate.checked || !consent.checked)) {
                         return;
                     }
 
@@ -545,14 +434,12 @@
             });
 
             document.getElementById('presurvey-form').addEventListener('change', () => {
-                updateScreeningState();
                 updateConsentState();
             });
 
-            updateScreeningState();
             updateConsentState();
             @if ($errors->any() || session('started'))
-                showStep(4);
+                showStep(1);
             @else
                 showStep(1);
             @endif

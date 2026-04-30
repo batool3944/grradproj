@@ -11,13 +11,9 @@
             'lang_ar_url' => route('experiment.thankyou', ['lang' => 'ar']),
             'eyebrow' => 'اكتملت المشاركة',
             'heading' => 'شكراً لك على مشاركتك',
-            'body' => 'تم استلام إجابتك بنجاح. مساهمتك تساعد في دراسة تأثير تصميم لافتات ملفات تعريف الارتباط على ثقة المستخدم.',
-            'sheet_status' => 'تم إرسال الإجابة إلى Google Sheets بنجاح.',
+            'body' => 'تم استلام إجابتك بنجاح.',
             'local_status' => 'تم حفظ الإجابة محلياً داخل المشروع، لكن رابط Google Apps Script الحالي ما زال يحتاج إلى دالة doPost ليعمل الإرسال المباشر إلى الجدول.',
             'endpoint_note' => 'تم الاحتفاظ بنسخة احتياطية محلية لأن نقطة النهاية الحالية تُرجع خطأ متعلقاً بـ doPost.',
-            'design_label' => 'التصميم الذي تمت مراجعته',
-            'back_home' => 'العودة إلى الصفحة الرئيسية',
-            'start_again' => 'بدء مشاركة جديدة',
         ]
         : [
             'html_lang' => 'en',
@@ -28,13 +24,9 @@
             'lang_ar_url' => route('experiment.thankyou', ['lang' => 'ar']),
             'eyebrow' => 'Participation Complete',
             'heading' => 'Thank you for participating',
-            'body' => 'Your response has been received successfully. Your input helps study how cookie banner design influences user trust.',
-            'sheet_status' => 'The response was sent to Google Sheets successfully.',
+            'body' => 'Your response has been received successfully.',
             'local_status' => 'The response was saved locally in the project, but the current Google Apps Script URL still needs a doPost function before direct sheet submission can work.',
             'endpoint_note' => 'A local backup was kept because the current endpoint returns a doPost-related error.',
-            'design_label' => 'Reviewed design',
-            'back_home' => 'Back to Home',
-            'start_again' => 'Start a New Response',
         ];
 @endphp
 <!DOCTYPE html>
@@ -122,34 +114,11 @@
                 font-size: .92rem;
                 font-weight: 800;
             }
-            .actions {
-                margin-top: 28px;
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, max-content));
-                gap: 14px;
-            }
-            .btn {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 56px;
-                padding: 14px 22px;
-                border-radius: 999px;
-                border: 1px solid transparent;
-                text-decoration: none;
-                font: inherit;
-                font-weight: 800;
-                cursor: pointer;
-            }
-            .btn-primary { color: #fff; background: linear-gradient(135deg, #1f67ff 0%, #4f89ff 100%); box-shadow: 0 12px 24px rgba(31,103,255,.2); }
-            .btn-secondary { background: #fff; color: var(--ink); border-color: rgba(81,105,127,.24); }
-
             @media (max-width: 640px) {
                 .page-shell { width: min(100% - 16px, 100%); padding: 16px 0 28px; }
                 .topbar { flex-direction: column; align-items: stretch; }
                 .panel { padding: 20px; }
-                .actions { grid-template-columns: 1fr; }
-                .lang-link, .btn { width: 100%; }
+                .lang-link { width: 100%; }
             }
         </style>
     </head>
@@ -171,21 +140,11 @@
                 <h1 class="title">{{ $copy['heading'] }}</h1>
                 <p class="copy">{{ $copy['body'] }}</p>
 
-                @if ($submissionStatus === 'google_sheet')
-                    <div class="status success">{{ $copy['sheet_status'] }}</div>
-                @elseif ($submissionStatus)
+                @if ($submissionStatus && $submissionStatus !== 'google_sheet')
                     <div class="status warning">{{ $copy['local_status'] }}</div>
                     <p class="copy">{{ $copy['endpoint_note'] }}</p>
                 @endif
 
-                @if ($design)
-                    <div class="meta">{{ $copy['design_label'] }}: {{ $design['name'] }}</div>
-                @endif
-
-                <div class="actions">
-                    <a class="btn btn-primary" href="{{ route('presurvey', ['lang' => $lang]) }}">{{ $copy['start_again'] }}</a>
-                    <a class="btn btn-secondary" href="{{ route('presurvey', ['lang' => $lang]) }}">{{ $copy['back_home'] }}</a>
-                </div>
             </section>
         </div>
     </body>

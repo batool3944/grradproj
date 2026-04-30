@@ -7,7 +7,6 @@
             'brand' => 'التجربة',
             'lang_en_url' => route('experiment.show', ['lang' => 'en', 'design' => $design['id']]),
             'lang_ar_url' => route('experiment.show', ['lang' => 'ar', 'design' => $design['id']]),
-            'design_label' => 'نوع التصميم',
             'scenario_title' => 'السيناريو',
             'scenario_body' => 'تخيل أنك تقوم بزيارة منصة تعليمية عبر الإنترنت تتيح للأشخاص تدريس وتعلم الدورات من أي مكان في العالم. عند فتحك للموقع لأول مرة، تظهر لافتة لملفات تعريف الارتباط تطلب موافقتك على استخدام هذه الملفات. يرجى اختيار الإجراء الذي يُرجّح أن تقوم به في هذا الموقف.',
             'response_title' => 'ما الإجراء الذي ستتخذه تجاه لافتة ملفات تعريف الارتباط هذه؟',
@@ -37,7 +36,6 @@
             'submit_incomplete' => 'يرجى الإجابة على جميع الأسئلة قبل إرسال النموذج.',
             'submit_ready' => 'تمت الإجابة على جميع الأسئلة ويمكنك الآن الإرسال.',
             'thanks_title' => 'تم استلام الإجابة',
-            'thanks_body_sheet' => 'تم إرسال الإجابة إلى Google Sheets بنجاح.',
             'thanks_body_local' => 'تم حفظ الإجابة محليًا داخل المشروع، لكن رابط Google Apps Script الحالي لا يزال بحاجة إلى دالة doPost ليتم الإرسال إلى الجدول مباشرة.',
             'endpoint_note' => 'الرابط الحالي يعيد خطأ doPost، لذلك تم حفظ نسخة احتياطية محليًا.',
         ]
@@ -46,7 +44,6 @@
             'brand' => 'Experiment',
             'lang_en_url' => route('experiment.show', ['lang' => 'en', 'design' => $design['id']]),
             'lang_ar_url' => route('experiment.show', ['lang' => 'ar', 'design' => $design['id']]),
-            'design_label' => 'Design Type',
             'scenario_title' => 'Scenario',
             'scenario_body' => 'Imagine you are visiting an online learning platform that allows people to teach and learn courses from anywhere in the world. As you open the website for the first time, a cookie banner appears asking for your consent to use cookies. Please select what you would most likely do in that situation.',
             'response_title' => 'How would you respond to this cookie banner?',
@@ -76,7 +73,6 @@
             'submit_incomplete' => 'Please answer every question before submitting the form.',
             'submit_ready' => 'All required questions are answered. You can submit now.',
             'thanks_title' => 'Response received',
-            'thanks_body_sheet' => 'The response was sent to Google Sheets successfully.',
             'thanks_body_local' => 'The response was saved locally in the project, but the current Google Apps Script URL still needs a doPost function before direct sheet submission can work.',
             'endpoint_note' => 'The current endpoint returns a doPost error, so a local backup was saved.',
         ];
@@ -218,9 +214,7 @@
             @if ($submissionStatus)
                 <div class="panel stack">
                     <div class="flash success">{{ $copy['thanks_title'] }}</div>
-                    @if ($submissionStatus === 'google_sheet')
-                        <p class="copy">{{ $copy['thanks_body_sheet'] }}</p>
-                    @else
+                    @if ($submissionStatus !== 'google_sheet')
                         <div class="flash warning">{{ $copy['thanks_body_local'] }}</div>
                         <p class="hint">{{ $copy['endpoint_note'] }}</p>
                     @endif
@@ -234,7 +228,6 @@
                         <div class="eyebrow">{{ $copy['scenario_title'] }}</div>
                         <h1 class="title">{{ $copy['response_title'] }}</h1>
                         <p class="copy">{{ $copy['scenario_body'] }}</p>
-                        <div class="meta">{{ $copy['design_label'] }}: {{ $design['name'] }}</div>
                     </section>
 
                     <aside class="stimulus-card">
