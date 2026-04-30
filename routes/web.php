@@ -117,17 +117,14 @@ Route::get('/thank-you', function (Request $request) use ($designs) {
         $lang = 'en';
     }
 
-    if (! $completed) {
-        return redirect()->route('presurvey', ['lang' => $lang]);
-    }
-
-    $designId = $completed['design_id'] ?? null;
+    $designId = $request->query('design', $completed['design_id'] ?? null);
     $design = collect($designs)->firstWhere('id', $designId);
+    $submissionStatus = $request->query('status', session('submission_status', $completed['submission_status'] ?? null));
 
     return view('thank-you', [
         'lang' => $lang,
         'design' => $design,
-        'submissionStatus' => session('submission_status', $completed['submission_status'] ?? null),
+        'submissionStatus' => $submissionStatus,
     ]);
 })->name('experiment.thankyou');
 
@@ -202,6 +199,10 @@ Route::post('/experiment/submit', function (Request $request) use ($designs, $go
     $request->session()->forget('presurvey');
 
     return redirect()
-        ->route('experiment.thankyou', ['lang' => $lang])
+        ->route('experiment.thankyou', [
+            'lang' => $lang,
+            'design' => $design['id'],
+            'status' => $submissionStatus,
+        ])
         ->with('submission_status', $submissionStatus);
 })->name('experiment.submit');
