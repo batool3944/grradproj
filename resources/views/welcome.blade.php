@@ -304,6 +304,22 @@
                                                 @endforeach
                                             </select>
                                         </div>
+                                        <div
+                                            class="field full-span"
+                                            id="field-of-study-other-wrap"
+                                            style="{{ old('field_of_study') === 'other' ? '' : 'display: none;' }}"
+                                        >
+                                            <label class="label" for="field_of_study_other">{{ $isArabic ? 'اكتب تخصصك الدراسي' : 'Please write your field of study' }}</label>
+                                            <input
+                                                class="select"
+                                                id="field_of_study_other"
+                                                name="field_of_study_other"
+                                                type="text"
+                                                maxlength="255"
+                                                placeholder="{{ $isArabic ? 'اكتب التخصص هنا' : 'Write your field here' }}"
+                                                value="{{ old('field_of_study_other') }}"
+                                            >
+                                        </div>
                                     </div>
                                 </div>
 
@@ -382,6 +398,8 @@
             const steps = Array.from(document.querySelectorAll('[data-step]'));
             const ageRange = document.getElementById('age_range');
             const fieldOfStudy = document.getElementById('field_of_study');
+            const fieldOfStudyOtherWrap = document.getElementById('field-of-study-other-wrap');
+            const fieldOfStudyOther = document.getElementById('field_of_study_other');
             const ageGate = document.getElementById('is_18_plus');
             const consent = document.getElementById('consent');
             const startButton = document.getElementById('start-button');
@@ -394,11 +412,27 @@
                 steps.forEach((step) => step.classList.toggle('active', Number(step.dataset.step) === stepNumber));
             }
 
+            function updateFieldOfStudyOtherState() {
+                const isOther = fieldOfStudy.value === 'other';
+                fieldOfStudyOtherWrap.style.display = isOther ? '' : 'none';
+
+                if (isOther) {
+                    fieldOfStudyOther.setAttribute('required', 'required');
+                    return;
+                }
+
+                fieldOfStudyOther.removeAttribute('required');
+                fieldOfStudyOther.value = '';
+            }
+
             function demographicReady() {
+                const otherFieldReady = fieldOfStudy.value !== 'other' || Boolean(fieldOfStudyOther.value.trim());
+
                 return Boolean(
                     ageRange.value &&
                     document.querySelector('input[name="gender"]:checked') &&
-                    fieldOfStudy.value
+                    fieldOfStudy.value &&
+                    otherFieldReady
                 );
             }
 
@@ -439,9 +473,11 @@
             });
 
             document.getElementById('presurvey-form').addEventListener('change', () => {
+                updateFieldOfStudyOtherState();
                 updateConsentState();
             });
 
+            updateFieldOfStudyOtherState();
             updateConsentState();
             @if ($errors->any() || session('started'))
                 showStep(1);

@@ -47,6 +47,7 @@ Route::post('/presurvey/start', function (Request $request) use ($designs) {
         'age_range' => ['required', 'in:18-24,25-34,35-44,45-54,55+'],
         'gender' => ['required', 'in:female,male'],
         'field_of_study' => ['required', 'in:it,engineering,business,law,medicine,other'],
+        'field_of_study_other' => ['nullable', 'string', 'max:255', 'required_if:field_of_study,other'],
         'is_18_plus' => ['accepted'],
         'consent' => ['accepted'],
     ]);
@@ -67,7 +68,9 @@ Route::post('/presurvey/start', function (Request $request) use ($designs) {
     $request->session()->put('presurvey', [
         'age_range' => $validated['age_range'],
         'gender' => $validated['gender'],
-        'field_of_study' => $validated['field_of_study'],
+        'field_of_study' => $validated['field_of_study'] === 'other'
+            ? $validated['field_of_study_other']
+            : $validated['field_of_study'],
         'consent_at' => now()->toIso8601String(),
         'lang' => $lang,
         'design_id' => $assignedDesign['id'],

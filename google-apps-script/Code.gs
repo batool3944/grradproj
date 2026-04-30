@@ -35,6 +35,30 @@ function doPost(e) {
 
     if (sheet.getLastRow() === 0) {
       sheet.appendRow(headers);
+    } else {
+      var existingHeaders = sheet
+        .getRange(1, 1, 1, Math.max(sheet.getLastColumn(), 1))
+        .getValues()[0]
+        .map(function(header) {
+          return String(header || "").trim();
+        });
+
+      var missingHeaders = headers.filter(function(header) {
+        return existingHeaders.indexOf(header) === -1;
+      });
+
+      if (missingHeaders.length > 0) {
+        var startColumn = existingHeaders.filter(String).length + 1;
+        sheet
+          .getRange(1, startColumn, 1, missingHeaders.length)
+          .setValues([missingHeaders]);
+
+        existingHeaders = existingHeaders
+          .filter(String)
+          .concat(missingHeaders);
+      }
+
+      headers = existingHeaders.filter(String);
     }
 
     var row = headers.map(function(header) {

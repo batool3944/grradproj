@@ -3,7 +3,7 @@
 return [
     'google_script_url' => env(
         'GOOGLE_SCRIPT_URL',
-        'https://script.google.com/macros/s/AKfycbwZaDzRnb89SzX9pV2k9Nmpvuhk_NkNsLjJCSrSRWYRNpGWkSpW0XSLlCgUBLCmJXiJ4g/exec'
+        'https://script.google.com/macros/s/AKfycbyCJQqKSygyGkZGWnT1LGTgAy75eOTTZ_vEe2se3Z69LKvq_kN4gYCXD-eLXM4pUpOCkQ/exec'
     ),
 
     'designs' => [
