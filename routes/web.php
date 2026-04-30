@@ -109,6 +109,28 @@ Route::get('/experiment', function (Request $request) use ($designs) {
     ]);
 })->name('experiment.show');
 
+Route::get('/thank-you', function (Request $request) use ($designs) {
+    $completed = $request->session()->get('completed_experiment');
+
+    $lang = $request->query('lang', $completed['lang'] ?? 'en');
+    if (! in_array($lang, ['en', 'ar'], true)) {
+        $lang = 'en';
+    }
+
+    if (! $completed) {
+        return redirect()->route('presurvey', ['lang' => $lang]);
+    }
+
+    $designId = $completed['design_id'] ?? null;
+    $design = collect($designs)->firstWhere('id', $designId);
+
+    return view('thank-you', [
+        'lang' => $lang,
+        'design' => $design,
+        'submissionStatus' => session('submission_status', $completed['submission_status'] ?? null),
+    ]);
+})->name('experiment.thankyou');
+
 Route::post('/experiment/submit', function (Request $request) use ($designs, $googleScriptUrl) {
     if (count($designs) === 0) {
         return redirect()->route('presurvey', ['lang' => $request->input('lang', 'en')]);
@@ -175,10 +197,11 @@ Route::post('/experiment/submit', function (Request $request) use ($designs, $go
     $request->session()->put('completed_experiment', [
         'lang' => $lang,
         'design_id' => $design['id'],
+        'submission_status' => $submissionStatus,
     ]);
     $request->session()->forget('presurvey');
 
     return redirect()
-        ->route('experiment.show', ['lang' => $lang, 'design' => $design['id']])
+        ->route('experiment.thankyou', ['lang' => $lang])
         ->with('submission_status', $submissionStatus);
 })->name('experiment.submit');
