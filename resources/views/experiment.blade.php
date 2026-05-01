@@ -15,14 +15,14 @@
                 'reject' => 'رفض',
                 'leave' => 'أغادر الموقع',
             ],
+            'reason_title' => 'ما السبب الذي دفعك لاختيار هذا الإجراء؟ (الموافقة، الرفض، أو مغادرة الموقع)',
+            'reason_placeholder' => 'اكتب السبب هنا...',
             'likert_title' => 'يرجى تحديد مدى موافقتك على العبارات التالية',
             'statements' => [
-                'honest_data' => 'أعتقد أن هذا الموقع سيتعامل بصدق مع بياناتي الشخصية.',
-                'cares_interests' => 'يشير تصميم هذا الموقع إلى أنه يهتم بمصالح المستخدمين.',
+                'honest_data' => 'أعتقد أن هذا الموقع سيتعامل مع بياناتي الشخصية بصدق.',
                 'deceptive_banner' => 'أشعر أن هذه اللافتة تحاول خداعي للموافقة على ملفات تعريف الارتباط.',
-                'professional_design' => 'يبدو الموقع مصممًا بشكل احترافي.',
-                'accurate_information' => 'تبدو المعلومات المقدمة في هذا الموقع دقيقة.',
-                'reliable_source' => 'يبدو هذا الموقع مصدرًا موثوقًا للمعلومات.',
+                'professional_design' => 'يبدو هذا الموقع مصممًا بشكل احترافي.',
+                'reliable_source' => 'يبدو هذا الموقع موثوقًا.',
             ],
             'likert_options' => [
                 1 => 'غير موافق بشدة',
@@ -31,15 +31,13 @@
                 4 => 'موافق',
                 5 => 'موافق بشدة',
             ],
-            'reason_title' => 'ما السبب الذي دفعك لاختيار هذا الإجراء؟ (الموافقة، الرفض، أو مغادرة الموقع)',
-            'reason_placeholder' => 'اكتب السبب هنا...',
             'submit' => 'إرسال الإجابة',
             'back' => 'العودة إلى الاستبيان التمهيدي',
             'answer_all' => 'يرجى الإجابة على جميع الأسئلة.',
             'answer_all_notice' => 'لا يمكن الإرسال قبل الإجابة على جميع الأسئلة.',
             'thanks_title' => 'تم استلام الإجابة',
-            'thanks_body_local' => 'تم حفظ الإجابة محليًا داخل المشروع، لكن رابط Google Apps Script الحالي لا يزال بحاجة إلى دالة doPost ليتم الإرسال إلى الجدول مباشرة.',
-            'endpoint_note' => 'الرابط الحالي يعيد خطأ doPost، لذلك تم حفظ نسخة احتياطية محليًا.',
+            'thanks_body_local' => 'تم حفظ الإجابة محليًا داخل المشروع، لكن رابط Google Apps Script الحالي ما زال يحتاج إلى دالة doPost ليعمل الإرسال المباشر إلى الجدول.',
+            'endpoint_note' => 'تم الاحتفاظ بنسخة احتياطية محلية لأن نقطة النهاية الحالية تُرجع خطأ متعلقًا بـ doPost.',
         ]
         : [
             'title' => 'Experiment',
@@ -54,14 +52,14 @@
                 'reject' => 'Reject',
                 'leave' => 'Leave the website',
             ],
+            'reason_title' => 'What made you choose this answer? (accept, reject, leave the website)',
+            'reason_placeholder' => 'Write your reason here...',
             'likert_title' => 'Please indicate your agreement with the statements below',
             'statements' => [
                 'honest_data' => 'I believe this website would be honest in handling my personal data.',
-                'cares_interests' => 'This website design suggests it cares about my best interests.',
-                'deceptive_banner' => 'I feel this banner is trying to deceive me into accepting cookies.',
-                'professional_design' => 'The website appears to be professionally designed.',
-                'accurate_information' => 'The information provided on this website appears to be accurate.',
-                'reliable_source' => 'This website appears to be a reliable source of information.',
+                'deceptive_banner' => 'I feel like this banner is trying to deceive me into accepting cookies.',
+                'professional_design' => 'The website appears to be professional.',
+                'reliable_source' => 'The website looks legitimate.',
             ],
             'likert_options' => [
                 1 => 'Strongly disagree',
@@ -70,8 +68,6 @@
                 4 => 'Agree',
                 5 => 'Strongly agree',
             ],
-            'reason_title' => 'What made you choose this answer? (accept, reject, leave the website)',
-            'reason_placeholder' => 'Write your reason here...',
             'submit' => 'Submit Answer',
             'back' => 'Back to Pre-Survey',
             'answer_all' => 'Please answer all questions.',
@@ -137,9 +133,7 @@
             h1,h2,h3,p { margin: 0; }
             .title { margin-top: 18px; font-size: clamp(1.9rem, 4vw, 3rem); line-height: 1.05; letter-spacing: -.04em; }
             .copy { margin-top: 16px; color: var(--ink); line-height: 1.85; }
-            .meta { margin-top: 20px; display: inline-flex; padding: 10px 14px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-size: .92rem; font-weight: 800; }
             .stimulus-card { background: rgba(255,255,255,.78); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 18px; }
-            .stimulus-card strong { display: block; margin-bottom: 12px; font-size: 1rem; }
             .stimulus-shot { width: 100%; display: block; border-radius: 18px; border: 1px solid rgba(73,97,122,.1); box-shadow: 0 16px 28px rgba(68,92,132,.12); object-fit: contain; }
             .survey-panel { margin-top: 24px; }
             .section-title { font-size: 1.3rem; margin-bottom: 14px; letter-spacing: -.02em; }
@@ -261,6 +255,11 @@
                     </section>
 
                     <section class="likert-block">
+                        <h2 class="section-title">{{ $copy['reason_title'] }}</h2>
+                        <textarea name="reason" placeholder="{{ $copy['reason_placeholder'] }}" required>{{ old('reason') }}</textarea>
+                    </section>
+
+                    <section class="likert-block">
                         <h2 class="section-title">{{ $copy['likert_title'] }}</h2>
 
                         @foreach ($copy['statements'] as $field => $statement)
@@ -278,11 +277,6 @@
                         @endforeach
                     </section>
 
-                    <section class="likert-block">
-                        <h2 class="section-title">{{ $copy['reason_title'] }}</h2>
-                        <textarea name="reason" placeholder="{{ $copy['reason_placeholder'] }}" required>{{ old('reason') }}</textarea>
-                    </section>
-
                     <div class="actions">
                         <div class="hint" id="submit-status">{{ $copy['answer_all'] }}</div>
                         <a class="btn btn-secondary" href="{{ route('presurvey', ['lang' => $lang]) }}">{{ $copy['back'] }}</a>
@@ -296,18 +290,15 @@
             <script>
                 const experimentForm = document.querySelector('form[action="{{ route('experiment.submit') }}"]');
                 const responseActionInputs = Array.from(document.querySelectorAll('input[name="response_action"]'));
-                const likertNames = ['honest_data', 'cares_interests', 'deceptive_banner', 'professional_design', 'accurate_information', 'reliable_source'];
+                const likertNames = ['honest_data', 'deceptive_banner', 'professional_design', 'reliable_source'];
                 const reasonField = document.querySelector('textarea[name="reason"]');
-                const submitButton = document.getElementById('survey-submit-button');
                 const submitStatus = document.getElementById('submit-status');
                 const submitNotice = document.getElementById('submit-notice');
                 const answerAll = @json($copy['answer_all']);
 
                 function experimentFormReady() {
                     const actionAnswered = responseActionInputs.some((input) => input.checked);
-                    const likertAnswered = likertNames.every((name) => {
-                        return document.querySelector(`input[name="${name}"]:checked`);
-                    });
+                    const likertAnswered = likertNames.every((name) => document.querySelector(`input[name="${name}"]:checked`));
                     const reasonAnswered = Boolean(reasonField.value.trim());
 
                     return actionAnswered && likertAnswered && reasonAnswered;
@@ -329,6 +320,7 @@
                         submitNotice.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                     }
                 });
+
                 updateExperimentSubmitState();
             </script>
         @endif

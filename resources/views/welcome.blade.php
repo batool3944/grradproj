@@ -185,12 +185,26 @@
             .image-card { border-radius: var(--radius-lg); padding: 18px; }
             .banner-shot { width: 100%; display: block; border-radius: 18px; border: 1px solid rgba(73,97,122,.1); box-shadow: 0 16px 28px rgba(68,92,132,.12); }
             .definition-box { padding: 18px 20px; border-radius: var(--radius-md); }
+            .survey-block { margin-top: 20px; display: grid; gap: 18px; }
+            .survey-card {
+                background: rgba(255,255,255,.9);
+                border: 1px solid var(--line);
+                border-radius: var(--radius-md);
+                padding: 18px 20px;
+            }
+            .survey-question {
+                font-size: 1rem;
+                font-weight: 800;
+                line-height: 1.8;
+                margin-bottom: 14px;
+            }
             .field, .full-span { display: grid; gap: 10px; }
             .full-span { grid-column: 1 / -1; }
             .label { font-size: 1rem; font-weight: 800; line-height: 1.7; }
             .select, .option label, .checkbox-card { background: rgba(255,255,255,.96); border: 1px solid rgba(86,111,138,.18); border-radius: 18px; }
             .select { width: 100%; min-height: 58px; padding: 0 16px; color: var(--ink); font: inherit; outline: none; }
             .radio-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+            .radio-grid.five { grid-template-columns: repeat(5, minmax(0,1fr)); }
             .option, .checkbox-card { position: relative; }
             .option input, .checkbox-card input { position: absolute; opacity: 0; pointer-events: none; }
             .option label { display: block; min-height: 78px; padding: 16px 18px; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
@@ -222,7 +236,7 @@
             .btn[disabled] { opacity: .56; cursor: not-allowed; box-shadow: none; transform: none; }
             .step-status { color: var(--muted); font-size: .95rem; font-weight: 700; }
             @media (max-width: 920px) {
-                .definition-layout, .screening-grid, .radio-grid { grid-template-columns: 1fr; }
+                .definition-layout, .screening-grid, .radio-grid, .radio-grid.five { grid-template-columns: 1fr; }
             }
             @media (max-width: 640px) {
                 .page-shell { width: min(100% - 16px, 100%); padding: 16px 0 28px; }
@@ -379,6 +393,101 @@
                                             alt="{{ $copy['definitions_title'] }}"
                                         >
                                     </div>
+                                    <div class="survey-block">
+                                        <div class="survey-card">
+                                            <div class="survey-question">
+                                                {{ $isArabic ? 'ما مدى تفاعلك مع لافتات ملفات تعريف الارتباط؟' : 'How often do you interact with cookie banners?' }}
+                                            </div>
+                                            <div class="radio-grid five">
+                                                @foreach ([
+                                                    '1' => $isArabic ? 'نادرًا جدًا' : 'Not very often',
+                                                    '2' => $isArabic ? 'نادرًا' : 'Rarely',
+                                                    '3' => $isArabic ? 'أحيانًا' : 'Sometimes',
+                                                    '4' => $isArabic ? 'غالبًا' : 'Often',
+                                                    '5' => $isArabic ? 'بشكل متكرر' : 'Very often',
+                                                ] as $value => $label)
+                                                    <div class="option">
+                                                        <input id="cookie_banner_interaction_{{ $value }}" type="radio" name="cookie_banner_interaction" value="{{ $value }}" required>
+                                                        <label for="cookie_banner_interaction_{{ $value }}"><strong>{{ $label }}</strong></label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+
+                                        <div class="survey-card">
+                                            <div class="survey-question">
+                                                {{ $isArabic ? 'ما مدى فهمك بملفات تعريف الارتباط؟' : 'How aware are you about cookies?' }}
+                                            </div>
+                                            <div class="survey-question" style="font-size: .95rem; font-weight: 700; margin-bottom: 10px;">
+                                                {{ $isArabic ? 'كيفية عمل ملفات تعريف الارتباط' : 'Functionality of cookies' }}
+                                            </div>
+                                            <div class="radio-grid five" style="margin-bottom: 14px;">
+                                                @foreach ([
+                                                    '1' => $isArabic ? 'ضعيف جدًا' : 'Not aware at all',
+                                                    '2' => $isArabic ? 'ضعيف' : 'Slightly aware',
+                                                    '3' => $isArabic ? 'متوسط' : 'Fairly aware',
+                                                    '4' => $isArabic ? 'عالٍ' : 'Very aware',
+                                                    '5' => $isArabic ? 'عالٍ جدًا' : 'Extremely aware',
+                                                ] as $value => $label)
+                                                    <div class="option">
+                                                        <input id="cookie_functionality_awareness_{{ $value }}" type="radio" name="cookie_functionality_awareness" value="{{ $value }}" required>
+                                                        <label for="cookie_functionality_awareness_{{ $value }}"><strong>{{ $label }}</strong></label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <div class="survey-question" style="font-size: .95rem; font-weight: 700; margin-bottom: 10px;">
+                                                {{ $isArabic ? 'فوائد ملفات تعريف الارتباط للمستخدمين' : 'Benefits of cookies to users' }}
+                                            </div>
+                                            <div class="radio-grid five" style="margin-bottom: 14px;">
+                                                @foreach ([
+                                                    '1' => $isArabic ? 'ضعيف جدًا' : 'Not aware at all',
+                                                    '2' => $isArabic ? 'ضعيف' : 'Slightly aware',
+                                                    '3' => $isArabic ? 'متوسط' : 'Fairly aware',
+                                                    '4' => $isArabic ? 'عالٍ' : 'Very aware',
+                                                    '5' => $isArabic ? 'عالٍ جدًا' : 'Extremely aware',
+                                                ] as $value => $label)
+                                                    <div class="option">
+                                                        <input id="cookie_benefits_awareness_{{ $value }}" type="radio" name="cookie_benefits_awareness" value="{{ $value }}" required>
+                                                        <label for="cookie_benefits_awareness_{{ $value }}"><strong>{{ $label }}</strong></label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <div class="survey-question" style="font-size: .95rem; font-weight: 700; margin-bottom: 10px;">
+                                                {{ $isArabic ? 'مخاطر الخصوصية المرتبطة بملفات تعريف الارتباط' : 'Privacy risks of cookies' }}
+                                            </div>
+                                            <div class="radio-grid five">
+                                                @foreach ([
+                                                    '1' => $isArabic ? 'ضعيف جدًا' : 'Not aware at all',
+                                                    '2' => $isArabic ? 'ضعيف' : 'Slightly aware',
+                                                    '3' => $isArabic ? 'متوسط' : 'Fairly aware',
+                                                    '4' => $isArabic ? 'عالٍ' : 'Very aware',
+                                                    '5' => $isArabic ? 'عالٍ جدًا' : 'Extremely aware',
+                                                ] as $value => $label)
+                                                    <div class="option">
+                                                        <input id="cookie_privacy_awareness_{{ $value }}" type="radio" name="cookie_privacy_awareness" value="{{ $value }}" required>
+                                                        <label for="cookie_privacy_awareness_{{ $value }}"><strong>{{ $label }}</strong></label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+
+                                        <div class="survey-card">
+                                            <div class="survey-question">
+                                                {{ $isArabic ? 'هل سبق لك رفض استخدام موقع إلكتروني بسبب طلبه قبول ملفات تعريف الارتباط؟' : 'Have you ever not used a website for requiring to accept cookies?' }}
+                                            </div>
+                                            <div class="radio-grid">
+                                                @foreach ([
+                                                    'yes' => $isArabic ? 'نعم' : 'Yes',
+                                                    'no' => $isArabic ? 'لا' : 'No',
+                                                ] as $value => $label)
+                                                    <div class="option">
+                                                        <input id="avoided_website_for_cookies_{{ $value }}" type="radio" name="avoided_website_for_cookies" value="{{ $value }}" required>
+                                                        <label for="avoided_website_for_cookies_{{ $value }}"><strong>{{ $label }}</strong></label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="wizard-actions">
@@ -405,6 +514,13 @@
             const startButton = document.getElementById('start-button');
             const consentStatus = document.getElementById('consent-status');
             const presurveyNotice = document.getElementById('presurvey-notice');
+            const pageTwoNames = [
+                'cookie_banner_interaction',
+                'cookie_functionality_awareness',
+                'cookie_benefits_awareness',
+                'cookie_privacy_awareness',
+                'avoided_website_for_cookies',
+            ];
             const consentUnderage = @json($copy['consent_underage']);
             const continueNotice = @json($copy['continue_notice']);
 
@@ -440,8 +556,12 @@
                 return Boolean(ageRange.value);
             }
 
+            function pageTwoReady() {
+                return pageTwoNames.every((name) => document.querySelector(`input[name="${name}"]:checked`));
+            }
+
             function updateConsentState() {
-                const ready = demographicReady() && participantEligible() && ageGate.checked && consent.checked;
+                const ready = demographicReady() && participantEligible() && ageGate.checked && consent.checked && pageTwoReady();
                 startButton.disabled = !ready;
                 presurveyNotice.hidden = true;
 
